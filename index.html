@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ahmed Emad · Links</title>
+<meta name="description" content="Ahmed Emad — Brand identity systems. Every decision has a reason. مقالات PDF وأدوات ببلاش.">
+<meta name="theme-color" content="#F2F2F2">
+<link rel="icon" href="eg.svg" type="image/svg+xml">
+<meta property="og:title" content="Ahmed Emad · Links">
+<meta property="og:description" content="Brand identity systems. Every decision has a reason.">
+<meta property="og:image" content="https://emadgraphics.github.io/og.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Mona+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preload" href="thmanyahserifdisplay-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="thmanyahsans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Thmanyah Serif Display";src:url(thmanyahserifdisplay-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url(thmanyahsans-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url(thmanyahsans-Medium.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url(thmanyahsans-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
+
+:root{
+  --grey:#F2F2F2; --white:#FFFFFF; --ink:#151515; --red:#E8432E; --trace:#DCDCDA;
+  --ink-60:#5c5c5c; --line:#cfcfcd;
+  --mono:"Geist Mono",ui-monospace,monospace;
+  --ar:"Thmanyah Sans","Mona Sans",system-ui,sans-serif;
+  --ar-display:"Thmanyah Serif Display","Thmanyah Sans",serif;
+  --en:"Mona Sans",system-ui,sans-serif;
+  --gutter:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--grey);color:var(--ink);font-family:var(--ar);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.04em;line-height:1.4;direction:ltr;unicode-bidi:isolate}
+.red{color:var(--red)}
+
+/* construction lines behind the sheet (desktop only) */
+.guides{position:fixed;inset:0;pointer-events:none;z-index:0}
+.guides::before,.guides::after{content:"";position:absolute;top:0;bottom:0;width:0;border-left:1px dashed var(--trace)}
+.guides::before{left:calc(50% - 300px)} .guides::after{left:calc(50% + 300px)}
+@media (max-width:640px){.guides{display:none}}
+
+.sheet{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:22px var(--gutter) 40px}
+
+/* top strip */
+.strip{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--line);direction:ltr}
+.strip .mono{color:var(--ink)}
+
+/* hero */
+.hero{padding-top:26px}
+.frame{position:relative;aspect-ratio:1/1;max-width:340px;margin:8px auto 0;background:var(--grey);isolation:isolate}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+.crop{position:absolute;width:18px;height:18px;border-color:var(--ink);border-style:solid;border-width:0}
+.crop.tl{top:-8px;left:-8px;border-top-width:2px;border-left-width:2px}
+.crop.tr{top:-8px;right:-8px;border-top-width:2px;border-right-width:2px}
+.crop.bl{bottom:-8px;left:-8px;border-bottom-width:2px;border-left-width:2px}
+.crop.br{bottom:-8px;right:-8px;border-bottom-width:2px;border-right-width:2px}
+.note{position:absolute;display:flex;align-items:center;gap:8px;color:var(--red);white-space:nowrap}
+.note .dot{width:7px;height:7px;border-radius:50%;background:var(--red);flex:none}
+.note .leader{height:1px;background:var(--red);flex:none}
+.note .tag{display:inline-grid;place-items:center;width:26px;height:26px;border:1px solid var(--red);border-radius:50%;font-family:var(--mono);font-size:11px}
+.note .txt{font-family:var(--mono);font-size:11.5px;color:var(--ink);line-height:1.45;text-align:left}
+.n1{top:13%;left:63%;direction:ltr}
+.n1 .leader{width:28px}
+.n1 .txt{position:absolute;top:34px;left:44px}
+@media (max-width:420px){.n1{left:60%}.n1 .txt{font-size:10.5px;left:30px}}
+
+.hero-head{margin-top:34px}
+.bar{width:64px;height:10px;background:var(--red);margin-bottom:16px}
+h1{font-family:var(--ar-display);font-weight:700;font-size:clamp(34px,9vw,46px);line-height:1.18;letter-spacing:0}
+.lede{margin-top:12px;font-size:17px;color:var(--ink)}
+.role{margin-top:14px;color:var(--red);display:block;text-align:right}
+
+.cta{margin-top:26px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:var(--ink);color:var(--white);padding:18px 20px;transition:transform .15s ease,background .15s ease}
+.cta:hover{background:#000}
+.cta:active{transform:translateY(1px)}
+.cta .t{font-weight:700;font-size:19px}
+.cta .mono{color:#bdbdbd}
+.cta .arrow{font-family:var(--mono);color:var(--red);font-size:18px}
+.cta-2{margin-top:8px;background:transparent;color:var(--ink);border:1px solid var(--ink);padding:14px 20px;flex-wrap:wrap}
+.cta-2:hover{background:var(--white)}
+.cta-2 .t2{font-weight:500;font-size:16px}
+.cta-2 .mono{color:var(--ink-60)}
+
+/* sections */
+section{margin-top:46px}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:6px}
+.sec-head h2{font-family:var(--ar-display);font-weight:700;font-size:26px;line-height:1.2}
+.sec-head .mono{color:var(--ink-60)}
+.sec-sub{font-size:15px;color:var(--ink-60);margin:10px 0 6px}
+
+.list{list-style:none}
+.row{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.row .num{font-family:var(--mono);font-size:13px;color:var(--red);direction:ltr}
+.row .title{font-weight:700;font-size:17px;line-height:1.35}
+.row .desc{font-size:14.5px;color:var(--ink-60);line-height:1.5;margin-top:2px}
+.row .meta{margin-top:6px;color:var(--ink-60);display:block;text-align:right}
+.row .act{font-family:var(--mono);font-size:12px;letter-spacing:.04em;border:1px solid var(--ink);padding:8px 10px;white-space:nowrap;direction:ltr;transition:background .15s,color .15s}
+a.row:hover .act{background:var(--ink);color:var(--white)}
+a.row:hover .title{text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:4px}
+.row.soon .title{color:var(--ink-60)}
+.row.soon .act{border-style:dashed;border-color:var(--ink-60);color:var(--ink-60)}
+
+.empty{margin-top:14px;background:var(--white);border:1px dashed var(--ink-60);padding:20px;position:relative}
+.empty p{font-size:15.5px}
+.empty .mono{display:block;margin-bottom:8px;color:var(--red);text-align:right}
+
+/* social grid */
+.links{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.link{background:var(--white);padding:16px;display:flex;flex-direction:column;gap:10px;min-height:96px;justify-content:space-between;border:1px solid transparent;transition:border-color .15s}
+.link:hover{border-color:var(--ink)}
+.link .k{color:var(--ink-60)}
+.link .v{font-family:var(--en);font-weight:600;font-size:15px;direction:ltr;text-align:right;word-break:break-word}
+.link .arr{color:var(--red)}
+.link .top{display:flex;justify-content:space-between;direction:ltr}
+
+/* title block footer */
+footer{margin-top:52px;display:flex;flex-direction:column;gap:18px}
+.tb{display:grid;grid-template-columns:1fr 1.6fr .8fr 1.1fr;border:1px solid var(--ink-60);direction:ltr}
+.tb div{padding:8px 10px;border-left:1px solid var(--ink-60)}
+.tb div:first-child{border-left:0}
+.tb .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--ink-60);display:block}
+.tb .v{font-family:var(--mono);font-size:12.5px;display:block;margin-top:3px}
+.sign{display:flex;align-items:center;gap:10px;direction:ltr}
+.sign img{width:26px;height:auto}
+.sign .mono{font-size:13px}
+.fine{color:var(--ink-60);font-size:13px}
+
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="guides" aria-hidden="true"></div>
+
+<main class="sheet">
+  <div class="strip">
+    <span class="mono">AHMED EMAD · LINKS</span>
+    <span class="mono">00 · INDEX</span>
+  </div>
+
+  <header class="hero">
+    <div class="frame">
+      <img src="ahmed.webp" alt="أحمد عماد" width="800" height="800" fetchpriority="high"
+           onerror="this.onerror=null;this.src='ahmed.jpg'">
+      <span class="crop tl"></span><span class="crop tr"></span><span class="crop bl"></span><span class="crop br"></span>
+      <div class="note n1" aria-hidden="true">
+        <span class="dot"></span><span class="leader"></span><span class="tag">01</span>
+        <span class="txt">Brand identity<br>designer</span>
+      </div>
+    </div>
+
+    <div class="hero-head">
+      <div class="bar"></div>
+      <h1>كل قرار في الهوية وراه سبب.. وبشرحهولك.</h1>
+      <p class="lede">بصمّم أنظمة هوية، وبدرّس البراندينج في «كيف بدأ البريف». هنا هتلاقي المقالات والأدوات اللي بعملها، ببلاش.</p>
+      <span class="mono role">BRAND IDENTITY SYSTEMS · BRANDING INSTRUCTOR</span>
+    </div>
+
+    <a class="cta" href="https://wa.me/201060981508?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D8%B9%D9%86%D8%AF%D9%8A%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%87%D9%88%D9%8A%D8%A9%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D9%86%D8%AA%D9%83%D9%84%D9%85." target="_blank" rel="noopener">
+      <span>
+        <span class="t">اشتغل معايا</span><br>
+        <span class="mono">WHATSAPP · +20 106 098 1508</span>
+      </span>
+      <span class="arrow" aria-hidden="true">←</span>
+    </a>
+    <a class="cta cta-2" href="mailto:emadgraphics.a@gmail.com?subject=%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%87%D9%88%D9%8A%D8%A9">
+      <span class="t2">أو ابعتلي إيميل</span>
+      <span class="mono">emadgraphics.a@gmail.com</span>
+    </a>
+  </header>
+
+  <section id="articles" aria-labelledby="h-articles">
+    <div class="sec-head"><h2 id="h-articles">المقالات</h2><span class="mono">02 · ARTICLES · PDF</span></div>
+    <p class="sec-sub">كل مقال ملف PDF تقرأه على الموبايل، بيشرح فكرة واحدة بالسبب.</p>
+    <ul class="list" id="list-articles"></ul>
+  </section>
+
+  <section id="tools" aria-labelledby="h-tools">
+    <div class="sec-head"><h2 id="h-tools">الأدوات</h2><span class="mono">03 · TOOLS</span></div>
+    <p class="sec-sub">حاجات جاهزة تستخدمها في شغلك على طول.</p>
+    <ul class="list" id="list-tools"></ul>
+  </section>
+
+  <section id="find" aria-labelledby="h-find">
+    <div class="sec-head"><h2 id="h-find">تلاقيني فين</h2><span class="mono">04 · ELSEWHERE</span></div>
+    <div class="links">
+      <a class="link" href="https://www.behance.net/emadgraphics" target="_blank" rel="noopener">
+        <span class="top"><span class="mono k">PORTFOLIO</span><span class="mono arr">↗</span></span>
+        <span class="v">Behance</span>
+      </a>
+      <a class="link" href="https://www.instagram.com/emadgraphics" target="_blank" rel="noopener">
+        <span class="top"><span class="mono k">INSTAGRAM</span><span class="mono arr">↗</span></span>
+        <span class="v">@emadgraphics</span>
+      </a>
+      <a class="link" href="https://www.linkedin.com/in/emadgraphics" target="_blank" rel="noopener">
+        <span class="top"><span class="mono k">LINKEDIN</span><span class="mono arr">↗</span></span>
+        <span class="v">in/emadgraphics</span>
+      </a>
+      <a class="link" href="mailto:emadgraphics.a@gmail.com">
+        <span class="top"><span class="mono k">EMAIL</span><span class="mono arr">↗</span></span>
+        <span class="v">Email</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="tb" aria-label="Sheet info">
+      <div><span class="k">SHEET</span><span class="v red">00 / 00</span></div>
+      <div><span class="k">SECTION</span><span class="v">Links</span></div>
+      <div><span class="k">REV</span><span class="v" id="rev">1.0</span></div>
+      <div><span class="k">DATE</span><span class="v" id="date">2026.11</span></div>
+    </div>
+    <div class="sign"><img src="eg.svg" alt=""><span class="mono">@emadgraphics</span></div>
+    <p class="fine">المقالات والأدوات مجانية للاستخدام الشخصي. لو هتنشرها، اذكر المصدر.</p>
+  </footer>
+</main>
+
+<script>
+/* =========================================================
+   هنا بتضيف المقالات والأدوات.
+   - حط ملف الـ PDF في فولدر files/
+   - زوّد سطر هنا بنفس الشكل
+   - لو file فاضي (null) يظهر "قريب" مع التاريخ
+   ========================================================= */
+const REV = "1.0";
+const ARTICLES = [
+  // { title: "عنوان المقال", desc: "سطر بيشرح الفكرة", file: "files/article-01.pdf", pages: 12, date: "2026.11" },
+];
+const TOOLS = [
+  { title: "قبل ما تدوس Export.. راجع الـ ١٠ دول", desc: "Checklist لتسليم ملفات الهوية من غير ما تنسى حاجة.", file: null, kind: "PDF", date: "2026.12.02" },
+  { title: "فولدر التسليم", desc: "فولدر فاضي مترتّب جاهز تحط فيه ملفات العميل.", file: null, kind: "ZIP", date: "2026.12.30" },
+];
+
+const pad = n => String(n).padStart(2, "0");
+function row(item, i){
+  const li = document.createElement("li");
+  const ready = !!item.file;
+  const el = document.createElement(ready ? "a" : "div");
+  el.className = "row" + (ready ? "" : " soon");
+  if (ready){ el.href = item.file; el.setAttribute("download",""); el.target = "_blank"; el.rel = "noopener"; }
+  const kind = item.kind || "PDF";
+  const meta = [kind, item.pages ? item.pages + " PAGES" : null, item.date].filter(Boolean).join(" · ");
+  el.innerHTML =
+    `<span class="num">${pad(i+1)}</span>
+     <span><span class="title"></span><span class="desc" style="display:block"></span><span class="mono meta"></span></span>
+     <span class="act">${ready ? "DOWNLOAD ↓" : "SOON"}</span>`;
+  el.querySelector(".title").textContent = "‏" + item.title;
+  el.querySelector(".desc").textContent = item.desc || "";
+  el.querySelector(".meta").textContent = meta;
+  li.appendChild(el);
+  return li;
+}
+function fill(id, items, emptyHTML){
+  const ul = document.getElementById(id);
+  if (!items.length){ ul.outerHTML = emptyHTML; return; }
+  items.forEach((it, i) => ul.appendChild(row(it, i)));
+}
+fill("list-articles", ARTICLES,
+  `<div class="empty"><span class="mono">01 · IN PROGRESS</span><p>أول مقال بيتكتب دلوقتي. تابعني على <a href="https://www.instagram.com/emadgraphics" target="_blank" rel="noopener" style="text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:4px">إنستجرام</a> عشان تعرف أول ما ينزل.</p></div>`);
+fill("list-tools", TOOLS, "");
+document.getElementById("rev").textContent = REV;
+</script>
+</body>
+</html>

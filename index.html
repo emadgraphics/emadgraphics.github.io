@@ -149,6 +149,17 @@ footer{margin-top:52px;display:flex;flex-direction:column;gap:18px}
 
 :focus-visible{outline:2px solid var(--red);outline-offset:3px}
 
+/* portfolio card */
+.pf{margin-top:22px;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;background:var(--white);border:1px solid var(--ink);padding:18px 18px 18px 20px;position:relative;transition:transform .2s ease,box-shadow .2s ease}
+.pf::before{content:"";position:absolute;top:-1px;right:-1px;width:44px;height:6px;background:var(--red)}
+.pf:hover{transform:translateY(-2px);box-shadow:0 6px 0 -1px var(--ink)}
+.pf .ix{font-family:var(--mono);font-size:12px;color:var(--red);direction:ltr}
+.pf .t{font-family:var(--ar-display);font-weight:700;font-size:24px;line-height:1.2;display:block}
+.pf .d{font-size:14.5px;color:var(--ink-60);display:block;margin-top:2px}
+.pf .meta{display:block;margin-top:8px;color:var(--ink-60);text-align:right}
+.pf .go{font-family:var(--mono);font-size:12px;letter-spacing:.04em;border:1px solid var(--ink);padding:8px 10px;white-space:nowrap;direction:ltr;transition:background .15s,color .15s}
+.pf:hover .go{background:var(--ink);color:var(--grey)}
+
 /* slogan ticker */
 .ticker{position:relative;margin:44px calc(50% - 50vw) 0;background:var(--ink);color:var(--grey);overflow:hidden;direction:ltr;border-block:1px solid var(--ink)}
 .ticker-track{display:flex;width:max-content;animation:tick 48s linear infinite}
@@ -233,6 +244,15 @@ a.row:hover .act{transform:translateY(2px)}
     <a class="cta cta-2 m" style="--d:1.3s" href="mailto:emadgraphics.a@gmail.com?subject=%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%87%D9%88%D9%8A%D8%A9">
       <span class="t2">أو ابعتلي إيميل</span>
       <span class="mono">emadgraphics.a@gmail.com</span>
+    </a>
+    <a class="pf m" style="--d:1.4s" href="https://drive.google.com/file/d/1yqkA9Vg9kCg5ACo47_xwINx53D83vxo1/view" target="_blank" rel="noopener">
+      <span class="ix">01</span>
+      <span>
+        <span class="t">البورتفوليو</span>
+        <span class="d">شغلي في الهوية والبراندينج.</span>
+        <span class="mono meta">PORTFOLIO · 2026 · PDF</span>
+      </span>
+      <span class="go">VIEW ↗</span>
     </a>
   </header>
 

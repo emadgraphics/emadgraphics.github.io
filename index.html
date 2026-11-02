@@ -637,13 +637,22 @@ img,svg,canvas{-webkit-user-drag:none;user-drag:none}
 @media (max-width:899px){.stamp{right:-34px;top:-98px;transform:rotate(-9deg) scale(.5)}@keyframes stampIn{0%{opacity:0;transform:rotate(-16deg) scale(1)}60%{opacity:1}100%{opacity:1;transform:rotate(-9deg) scale(.5)}}}
 @media (prefers-reduced-motion:reduce){.js .stamp{opacity:1}.js .stamp.on{animation:none}}
 
-/* numbers under the about text: a small title block, same edges as the text above it */
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--ink-60);margin-top:18px;direction:rtl}
-.stats > div{padding:9px 12px 10px;border-inline-start:1px solid var(--ink-60);display:flex;flex-direction:column;gap:4px;align-items:flex-start;direction:ltr}
-.stats > div:first-child{border-inline-start:0}
-.stats .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--ink-60)}
-.stats .v{font-family:var(--en);font-weight:700;font-size:clamp(20px,2vw,28px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
-@media (max-width:899px){.stats > div{padding:8px 8px 9px}.stats .k{font-size:9px;letter-spacing:.03em}}
+/* numbers under the about text: no box, just the figures with small labels, on the same edges as the text */
+.stats{display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between;margin-top:22px;direction:rtl}
+.stats > div{display:flex;flex-direction:column;gap:6px;align-items:flex-end;direction:ltr}
+.stats .v{font-family:var(--en);font-weight:700;font-size:clamp(26px,2.6vw,36px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.01em;order:-1}
+.stats .k{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--ink-60)}
+@media (max-width:899px){.stats{margin-top:18px}.stats .v{font-size:24px}.stats .k{font-size:9.5px;letter-spacing:.04em}}
+
+/* on phones the numbers sit under the photo, not above it */
+.stats-m{display:none}
+@media (max-width:760px){
+  .ar .stats{display:none}
+  .stats-m{display:grid;opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1);max-width:var(--A);width:100%;align-self:center;margin-top:4px}
+  .art.done ~ .stats-m{opacity:1;transform:none}
+}
+@media (max-width:760px) and (max-height:720px){.art{--A:min(calc(100vw - 2*var(--rw) - 60px),27vh,280px);--A:min(calc(100vw - 2*var(--rw) - 60px),27svh,280px)}.cv .rule.bot{display:none}.cv-body{padding:10px 0;gap:12px}.stage{padding-top:80px}}
+
 /* fixed top bar: on open it reads like the cover's own header; once you scroll, the sections and the toggle come in */
 .topbar{position:fixed;top:0;left:var(--rw);right:var(--rw);z-index:40;background:var(--grey);padding-top:env(safe-area-inset-top,0px)}
 .tb-in{max-width:calc(var(--wrap) + 2*var(--side));margin:0 auto;padding:22px var(--side) 12px;display:flex;align-items:center;gap:20px;direction:ltr;border-bottom:1px solid transparent;transition:border-color .3s}
@@ -775,6 +784,12 @@ img,svg,canvas{-webkit-user-drag:none;user-drag:none}
               <div><span class="k">SECTION</span><span class="v" id="tbSec">Cover</span></div>
               <div><span class="k">REV</span><span class="v">1.0</span></div>
               <div><span class="k">DATE</span><span class="v">2026.11</span></div>
+            </div>
+            <div class="stats stats-m" aria-hidden="true" data-l="450+ logos, 300+ brands, 70+ students, 7+ years">
+              <div><span class="k">LOGOS</span><span class="v">450+</span></div>
+              <div><span class="k">BRANDS</span><span class="v">300+</span></div>
+              <div><span class="k">STUDENTS</span><span class="v">70+</span></div>
+              <div><span class="k">YEARS</span><span class="v">7+</span></div>
             </div>
           </div>
         </div>
@@ -1049,6 +1064,7 @@ document.getElementById("rev").textContent = REV;
     if(arKids[0]) arKids[0].style.transformOrigin="right";
     const fin=p>0.5; tbSec.textContent=fin?"Links":"Cover"; tbSheet.textContent=fin?"01":"00";
     art.classList.toggle("done",p>0.82);
+    if(p>0.8&&window.__count) window.__count();
   }
   let tick=false;const req=()=>{if(!tick){tick=true;requestAnimationFrame(()=>{tick=false;frame();});}};
   addEventListener("scroll",req,{passive:true});addEventListener("resize",req);frame();
@@ -1229,6 +1245,22 @@ document.getElementById("rev").textContent = REV;
 /* ===== APPROVED stamp lands when the end is in view ===== */
 (function(){const st=document.querySelector(".stamp");if(!st)return;if(!("IntersectionObserver" in window)){st.classList.add("on");return;}
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){setTimeout(()=>st.classList.add("on"),400);io.disconnect();}}),{threshold:.6});io.observe(document.querySelector(".end-row"));})();
+/* ===== numbers count up like a counter the first time they appear ===== */
+(function(){
+  const vs=[...document.querySelectorAll(".stats .v")]; if(!vs.length) return;
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const data=vs.map(v=>{const m=v.textContent.match(/(\d+)(.*)/);return {v,n:+m[1],suf:m[2]};});
+  data.forEach(d=>{d.v.style.minWidth=d.v.offsetWidth+"px";});
+  let done=false;
+  window.__count=function(){ if(done) return; done=true; if(reduce) return;
+    data.forEach(d=>d.v.textContent="0"+d.suf);
+    const t0=performance.now(), D=1800;
+    (function step(t){const k=Math.min(1,(t-t0)/D), e=1-Math.pow(1-k,4);
+      data.forEach((d,i)=>{const kk=Math.min(1,Math.max(0,(t-t0-i*120)/D)), ee=1-Math.pow(1-kk,4); d.v.textContent=Math.round(d.n*ee)+d.suf;});
+      if((t-t0)<D+data.length*120) requestAnimationFrame(step); else data.forEach(d=>d.v.textContent=d.n+d.suf);
+    })(t0);
+  };
+})();
 /* ===== top bar: sections + where you are ===== */
 (function(){
   const bar=document.getElementById("topbar"), now=document.getElementById("secNow"), intro=document.getElementById("intro");

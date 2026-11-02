@@ -637,6 +637,13 @@ img,svg,canvas{-webkit-user-drag:none;user-drag:none}
 @media (max-width:899px){.stamp{right:-34px;top:-98px;transform:rotate(-9deg) scale(.5)}@keyframes stampIn{0%{opacity:0;transform:rotate(-16deg) scale(1)}60%{opacity:1}100%{opacity:1;transform:rotate(-9deg) scale(.5)}}}
 @media (prefers-reduced-motion:reduce){.js .stamp{opacity:1}.js .stamp.on{animation:none}}
 
+/* numbers under the about text: a small title block, same edges as the text above it */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--ink-60);margin-top:18px;direction:rtl}
+.stats > div{padding:9px 12px 10px;border-inline-start:1px solid var(--ink-60);display:flex;flex-direction:column;gap:4px;align-items:flex-start;direction:ltr}
+.stats > div:first-child{border-inline-start:0}
+.stats .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--ink-60)}
+.stats .v{font-family:var(--en);font-weight:700;font-size:clamp(20px,2vw,28px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+@media (max-width:899px){.stats > div{padding:8px 8px 9px}.stats .k{font-size:9px;letter-spacing:.03em}}
 /* fixed top bar: on open it reads like the cover's own header; once you scroll, the sections and the toggle come in */
 .topbar{position:fixed;top:0;left:var(--rw);right:var(--rw);z-index:40;background:var(--grey);padding-top:env(safe-area-inset-top,0px)}
 .tb-in{max-width:calc(var(--wrap) + 2*var(--side));margin:0 auto;padding:22px var(--side) 12px;display:flex;align-items:center;gap:20px;direction:ltr;border-bottom:1px solid transparent;transition:border-color .3s}
@@ -736,6 +743,12 @@ img,svg,canvas{-webkit-user-drag:none;user-drag:none}
               <h1>كل قرار <span class="pill" data-k="0" aria-hidden="true"></span> في الهوية وراه سبب.. <span class="pill" data-k="1" aria-hidden="true"></span> وبشرحهولك.</h1>
               <p class="lede">بصمّم أنظمة هوية، وبدرّس البراندينج كطريقة تفكير. هنا هتلاقي المقالات والأدوات اللي بعملها، ببلاش.</p>
               <span class="mono role">BRAND IDENTITY SYSTEMS · BRANDING INSTRUCTOR</span>
+              <div class="stats" aria-label="450+ logos, 300+ brands, 70+ students, 7+ years">
+                <div><span class="k">LOGOS</span><span class="v">450+</span></div>
+                <div><span class="k">BRANDS</span><span class="v">300+</span></div>
+                <div><span class="k">STUDENTS</span><span class="v">70+</span></div>
+                <div><span class="k">YEARS</span><span class="v">7+</span></div>
+              </div>
             </div>
           </div>
           <div class="cv-art">

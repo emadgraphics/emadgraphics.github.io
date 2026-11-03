@@ -746,6 +746,8 @@ img,svg,canvas{-webkit-user-drag:none;user-drag:none}
 .lv-stk-in{transform-box:fill-box;transform-origin:center;opacity:0;animation:lvSlap 9s cubic-bezier(.3,1.6,.5,1) infinite;animation-delay:2.9s}
 @keyframes lvSlap{0%{opacity:0;transform:scale(1.35) rotate(-8deg)}4%,62%{opacity:1;transform:none}70%,100%{opacity:0;transform:none}}
 @media (prefers-reduced-motion:reduce){.lv-stk-in{animation:none;opacity:1}}
+.ac-stamp.pub{left:auto;right:9%;bottom:6%;width:64px;height:64px;background:var(--white);border-width:2px;box-shadow:0 0 0 3px var(--white)}
+.ac-stamp.pub b{font-size:14px}
 </style>
 </head>
 <body>
@@ -1022,7 +1024,7 @@ function card(item, i){
     const el=document.createElement(ready?"a":"div"); el.className="ac-in";
     if(ready){el.href=item.file;el.target="_blank";el.rel="noopener";}
     const meta=["A·"+n,"PDF",item.pages?item.pages+" PAGES":null,item.date].filter(Boolean).join(" · ");
-    el.innerHTML=`<div class="ac-cover${item.live?' is-live':''}">${item.live==='graveyard'?liveGraveyardHTML():item.cover?'<img alt="" loading="lazy">':sheetHTML(7)}${crops}</div>
+    el.innerHTML=`<div class="ac-cover${item.live?' is-live':''}">${item.live==='graveyard'?liveGraveyardHTML():item.cover?'<img alt="" loading="lazy">':sheetHTML(7)}${crops}${ready?'<span class="ac-stamp pub"><span><b>'+(item.date||'').split('.').slice(1).reverse().join('.')+'</b>PUBLISHED</span></span>':''}</div>
       <div class="ac-body"><span class="mono ac-k"></span><h3 class="title"></h3><p class="desc"></p><span class="act">${ready?"READ PDF ↗":"SOON"}</span></div>`;
     if(item.cover)el.querySelector("img").src=item.cover;
     el.querySelector(".ac-k").textContent=meta;

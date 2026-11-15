@@ -364,7 +364,7 @@ a.ac-in:hover .act{background:var(--ink);color:var(--white)}
 .ac.soon .act{border-style:dashed;border-color:var(--ink-60);color:var(--ink-60)}
 @media (max-width:899px){.ac-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}}
 @media (max-width:640px){
-  .ac-grid{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px;scrollbar-width:none}
+  .ac-grid{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:70%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;overscroll-behavior-x:contain;touch-action:pan-x pan-y;-webkit-overflow-scrolling:touch;padding-bottom:4px;scrollbar-width:none}
   .ac-grid::-webkit-scrollbar{display:none}
   .ac{scroll-snap-align:start}
 }
@@ -1265,7 +1265,7 @@ document.getElementById("rev").textContent = REV;
     const li=e.target.closest(".st"); if(!li||e.button>0) return;
     drag=li;pid=e.pointerId;started=false;sx=e.clientX;sy=e.clientY;
     const r=li.getBoundingClientRect();gx=e.clientX-r.left;gy=e.clientY-r.top;
-    if(e.pointerType!=="mouse"){timer=setTimeout(()=>{if(drag){begin();try{li.setPointerCapture(pid)}catch(_){}place(sx,sy);}},280);}
+    if(e.pointerType!=="mouse"){const y0=scrollY;timer=setTimeout(()=>{if(drag&&Math.abs(scrollY-y0)<4){begin();try{li.setPointerCapture(pid)}catch(_){}place(sx,sy);}else drag=null;},450);}
     else{try{li.setPointerCapture(pid)}catch(_){}}
   });
   grid.addEventListener("pointermove",e=>{

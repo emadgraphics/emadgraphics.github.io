@@ -951,7 +951,7 @@ const TOOL_ICONS = {
 
 const ARTICLES = [
   // { title: "عنوان المقال", desc: "سطر بيشرح الفكرة", file: "files/article-01.pdf", pages: 12, date: "2026.11" },
-  { title: "مقبرة الكونسبتس", desc: "٥ أفكار اترفضت.. وكل واحدة علّمتني حاجة.", file: "concept-graveyard.pdf", pages: 9, date: "2026.11.15", live: "graveyard" },
+  { title: "مقبرة الكونسبتس", desc: "٥ أفكار اترفضت.. وكل واحدة علّمتني حاجة.", file: "concept-graveyard.pdf", page: "/articles/concept-graveyard/", pages: 9, date: "2026.11.15", live: "graveyard" },
   { title: "إزاي تعرض الكونسبت", desc: "الكونسبت الحلو ممكن يترفض.. بسبب ترتيب العرض.", file: "how-to-present-a-concept.pdf", pages: 9, date: "2026.11.15", live: "present" },
 ];
 const TOOLS = [
@@ -1073,10 +1073,10 @@ function card(item, i){
   if(item){
     li.className="ac"+(ready?"":" soon");
     const el=document.createElement(ready?"a":"div"); el.className="ac-in";
-    if(ready){el.href=item.file;el.target="_blank";el.rel="noopener";}
-    const meta=["A·"+n,"PDF",item.pages?item.pages+" PAGES":null,item.date].filter(Boolean).join(" · ");
+    if(ready){if(item.page){el.href=item.page;}else{el.href=item.file;el.target="_blank";el.rel="noopener";}}
+    const meta=["A·"+n,item.page?"WEB + PDF":"PDF",item.pages?item.pages+" PAGES":null,item.date].filter(Boolean).join(" · ");
     el.innerHTML=`<div class="ac-cover${item.live?' is-live':''}">${item.live==='graveyard'?liveGraveyardHTML():item.live==='present'?livePresentHTML():item.cover?'<img alt="" loading="lazy">':sheetHTML(7)}${crops}${ready?'<span class="ac-stamp pub"><span><b>'+(item.date||'').split('.').slice(1).reverse().join('.')+'</b>PUBLISHED</span></span>':''}</div>
-      <div class="ac-body"><span class="mono ac-k"></span><h3 class="title"></h3><p class="desc"></p><span class="act">${ready?"READ PDF ↗":"SOON"}</span></div>`;
+      <div class="ac-body"><span class="mono ac-k"></span><h3 class="title"></h3><p class="desc"></p><span class="act">${ready?(item.page?"READ ↗":"READ PDF ↗"):"SOON"}</span></div>`;
     if(item.cover)el.querySelector("img").src=item.cover;
     el.querySelector(".ac-k").textContent=meta;
     el.querySelector(".title").textContent="‏"+item.title;
